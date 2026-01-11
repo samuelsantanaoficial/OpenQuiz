@@ -1,0 +1,20 @@
+# Teste de fogo
+
+1. Qual a cor do sol?
+* Amarelo
+* Azul
+* Verde
+* Roxo
+
+2. Quanto é 1+1?
+- 2
+- 3
+- 5
+- 11
+
+Quem descobriu o Brasil?
+> Obs: Foi em 1500
++ Pedro Álvares Cabral
++ Colombo
++ Dom Pedro I
++ Lula
