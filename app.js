@@ -280,15 +280,41 @@ class OpenQuiz {
         document.getElementById('screen-game').classList.add('d-none');
         document.getElementById('footer-score').classList.add('d-none');
         document.getElementById('screen-result').classList.remove('d-none');
+        
         this.stopAudio();
 
-        const rank = [...this.players].sort((a, b) => b.score - a.score);
-        document.getElementById('winner-alert').innerText = `${rank[0].name} Venceu!`;
+        const rank = [...this.players].sort((a,b) => b.score - a.score);
+        
+        const winner = rank[0];
+        const winnerAlert = document.getElementById('winner-alert');
 
+        // Verifica se existe mais de 1 jogador e se o primeiro tem a mesma pontuação do segundo
+        const isTie = (rank.length > 1 && rank[0].score === rank[1].score);
+
+        if (isTie) {
+            // Se empatou: Mostra Azul (Info) e diz "Empate!"
+            winnerAlert.className = "alert alert-info d-inline-block fw-bold px-5 mb-4 shadow-sm";
+            winnerAlert.innerHTML = `<i class="bi bi-people-fill"></i> EMPATE!`;
+        } else {
+            // Se tem vencedor: Mostra Verde (Success) e o nome dele
+            winnerAlert.className = "alert alert-success d-inline-block fw-bold px-5 mb-4 shadow-sm";
+            winnerAlert.innerHTML = `<i class="bi bi-trophy-fill"></i> ${winner.name} venceu!`;
+        }
+        
         const list = document.getElementById('final-list');
         list.innerHTML = '';
+        
         rank.forEach((p, i) => {
-            list.innerHTML += `<li class="list-group-item d-flex justify-content-between"><span>${i + 1}º ${p.name}</span> <strong>${p.score}</strong></li>`;
+            const badgeClass = p.color.includes('bg-') ? p.color : `bg-${p.color}`;
+
+            list.innerHTML += `
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        <span class="badge ${badgeClass} me-2">${i+1}º</span> 
+                        ${p.name}
+                    </span> 
+                    <strong>${p.score} pts</strong>
+                </li>`;
         });
     }
 
