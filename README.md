@@ -1,98 +1,107 @@
-# jsonQUIZ - Crie e Jogue Quizzes Interativos 🎯  
+# OpenQuiz 🎓
 
-[![PWA](https://img.shields.io/badge/PWA-Optimized-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)](https://web.dev/what-are-pwas/)
-[![License](https://img.shields.io/badge/License-MIT-brightgreen?style=for-the-badge)](LICENSE)
+**O seu "Game Show" de bolso!** O **OpenQuiz** é um sistema leve e open-source para rodar quizzes multiplayer estilo "Passa ou Repassa" ou "Show do Milhão", onde um apresentador lê as perguntas e os jogadores competem localmente.
 
-**Transforme qualquer conteúdo em um quiz divertido e compartilhável!** 
-
-# [INSTALAÇÃO](https://jsonquiz.netlify.app/)
+> Crie perguntas usando um simples bloco de notas! 📝
 
 ---
 
-## Funcionalidades
+## ✨ Funcionalidades
 
-**Quiz Personalizado**  
-- Importe perguntas via JSON (totalmente customizável)  
-- Suporte a imagens, referências e feedback detalhado 
-
-**Multiplos Modos de Jogo**
-- Individual (treine sozinho)  
-- Multiplayer local (desafie amigos)
-
-**Experiência Premium**  
-- PWA (instalável e funciona offline) 
-- Animações fluidas e design intuitivo  
-- 100% responsivo (mobile, tablet, desktop)
-- Efeitos sonoros
-
-# [Downloads](https://github.com/samuelsantanaoficial/JsonQUIZ/releases/latest)
+* **⚡ Formato Ultra Simples (.txt):** Escreva perguntas como se estivesse num bloco de notas. Sem códigos complicados.
+* **🎤 Modo Apresentador:** O jogo exibe a pergunta, você lê para a plateia, e só libera as respostas ao apertar **"VALENDO!"**.
+* **⏱️ Tensão Real:** Efeitos sonoros sincronizados (Tic-Tac) para criar suspense nos 15 segundos de resposta.
+* **👥 Multiplayer Local:** Suporte para até 6 jogadores/times na mesma tela.
+* **📱 PWA & Offline:** Instale no celular/tablet e jogue mesmo sem internet.
+* **🎨 Design Moderno:** Interface limpa usando Bootstrap 5 e ícones intuitivos.
 
 ---
 
-## Demonstração  
+## 🚀 Como Jogar
 
-![Demontração](demo.gif)
+1. **Conecte na TV (Opcional):** Ideal para projetar a tela para grupos.
+2. **Carregue o Arquivo:** Selecione seu arquivo `.txt` com as perguntas.
+3. **Adicione os Jogadores:** Configure os nomes e cores dos participantes.
+4. **Seja o Apresentador:**
+* A pergunta aparece na tela.
+* Você lê em voz alta.
+* Clique em **"VALENDO!"**.
+* O cronômetro dispara e os jogadores tentam acertar!
 
----
 
-## Como Usar
-1. **Escolha o modo de jogo:**
-    - Individual
-    - Multiplayer local
-
-1. **Carregue suas perguntas**:
-   - Clique no botão "Importar JSON"
-   - Você pode **baixar perguntas prontas [aqui](https://github.com/samuelsantanaoficial/JsonQUIZ/releases/latest)**
-
-2. **Jogue com amigos**:
-   - Aproveita o aplicativo com seus amigos.
-
-3. **Personalize**:
-   - Crie suas próprias perguntas.
 
 ---
 
-## Criando Seu Próprio Quiz  
-Use a estrutura JSON abaixo (*arquivo completo na pasta* `/dist/`):
+## 📝 Criando suas Perguntas (Novo Formato)
 
-```json
-[
-    {
-        "quiz": "Quem escreveu o livro de Atos dos Apóstolos?",
-        "a": "João",
-        "b": "Lucas",
-        "c": "Paulo",
-        "d": "Pedro",
-        "x": "b",
-        "ref": "Atos 1:1"
-    },
-    {
-        "quiz": "Quantos dias Jesus permaneceu na terra após sua ressurreição antes de subir ao céu?",
-        "a": "7 dias",
-        "b": "12 dias",
-        "c": "40 dias",
-        "d": "50 dias",
-        "x": "c",
-        "ref": "Atos 1:3",
-        "link": "https://www.bible.com/pt/bible/211/ACT.1.3"
-    }
-]
+Esqueça JSON ou Excel. Agora você usa arquivos de texto simples (`.txt`).
+
+### A Regra de Ouro 🥇
+
+**A primeira opção da lista deve ser SEMPRE a resposta CORRETA.**
+*(Não se preocupe, o jogo embaralha as opções automaticamente na hora de exibir).*
+
+### Exemplo de Arquivo (`quiz.txt`):
+
+```markdown
+# Conhecimentos Gerais
+
+Qual é a capital da França?
+- Paris
+- Londres
+- Berlim
+- Madrid
+
+Quem pintou a Mona Lisa?
+> Fonte: História da Arte (Renascimento)
+- Leonardo da Vinci
+- Michelangelo
+- Donatello
+- Rafael
+
+Quantos dias tem um ano bissexto?
+- 366
+- 365
+- 360
+- 364
+
 ```
 
-> **Regras de Formatação:**
-> 1. Use letras minúsculas em `x` (`a`, `b`, `c`, `d`)
-> 2. Sempre coloque vírgula entre perguntas
-> 3. Não use espaços após as vírgulas
-> 4. `ref` e `link` são opcionais  
+### Detalhes da Sintaxe:
+
+* **# Título:** A primeira linha com `#` define o nome do Quiz.
+* **- Opções:** Use hífen `-`, asterisco `*` ou mais `+` para listar as alternativas.
+* **> Referência (Opcional):** Use `>` logo abaixo da pergunta para adicionar uma fonte, versículo bíblico ou link explicativo que aparecerá após a resposta.
 
 ---
 
-## Licença
-Este projeto está sob licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+## 🤖 Gerando Perguntas com IA
+
+Quer criar um quiz em segundos? Copie este prompt e cole no **ChatGPT**, **Gemini** ou **Claude**:
+
+```text
+Crie um arquivo de quiz sobre o tema [SEU TEMA AQUI].
+Formato obrigatório:
+1. Use "# " para o título.
+2. A primeira opção de cada pergunta deve ser a CORRETA (comece com hifén "- ").
+3. Adicione 3 opções incorretas abaixo da correta.
+4. (Opcional) Adicione uma linha de referência com "> " abaixo da pergunta.
+5. Deixe uma linha em branco entre as perguntas.
+6. Não numere as perguntas.
+
+```
 
 ---
 
-## Contribua
-Você pode contribuir com perguntas
+## 🛠️ Tecnologias
+
+* **HTML5 & CSS3** (Bootstrap 5)
+* **JavaScript Moderno** (ES6+)
+* **FileReader API** (Para ler os arquivos TXT locais)
+* **Web Audio API** (Para controle de sons e loops)
 
 ---
+
+## 📄 Licença
+
+Este projeto está sob licença MIT. Você é livre para usar na sua escola, igreja ou grupo de amigos.
