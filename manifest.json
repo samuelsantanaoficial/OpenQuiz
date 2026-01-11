@@ -1,7 +1,7 @@
 {
     "name": "OpenQuiz",
     "short_name": "OpenQuiz",
-    "start_url": "/",
+	"start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#e9ecef",
