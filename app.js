@@ -121,6 +121,8 @@ class OpenQuiz {
         document.getElementById('footer-score').classList.remove('d-none');
         this.updateMiniScore();
         this.loadQuestion();
+
+        window.onbeforeunload = () => "O jogo está em andamento. Se sair, perderá o progresso.";
     }
 
     loadQuestion() {
@@ -141,7 +143,7 @@ class OpenQuiz {
         turn.className = `btn btn-sm fw-bolder w-50 btn-outline-${p.color.replace('bg-', '')}`;
         turn.innerText = `${p.name}`;
 
-        // Renderiza Opções (Bloqueadas visualmente, mas legíveis)
+        // Renderiza Opções
         const optArea = document.getElementById('options-area');
         optArea.innerHTML = '';
         let opts = q.options.map(t => ({ text: t }));
@@ -162,7 +164,6 @@ class OpenQuiz {
     releaseTimer() {
         document.getElementById('btn-release-timer').classList.add('d-none');
 
-        // Remove o bloqueio, trazendo a cor original dos botões (Branco)
         const area = document.getElementById('options-area');
         area.classList.remove('blocked-area');
 
@@ -225,7 +226,7 @@ class OpenQuiz {
         }
 
         if (q.ref) {
-            const link = q.ref.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">Link</a>');
+            const link = q.ref.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">Link para verificação</a>');
             feed.innerHTML += `<div class="alert alert-secondary py-2 small mt-2">${link}</div>`;
         }
 
@@ -316,6 +317,8 @@ class OpenQuiz {
                     <strong>${p.score} pts</strong>
                 </li>`;
         });
+
+        window.onbeforeunload = null;
     }
 
     resetToMenu() {
@@ -325,6 +328,8 @@ class OpenQuiz {
         document.getElementById('screen-result').classList.add('d-none');
         document.getElementById('footer-score').classList.add('d-none');
         document.getElementById('screen-setup').classList.remove('d-none');
+
+        window.onbeforeunload = null;
     }
 }
 
