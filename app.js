@@ -255,7 +255,7 @@ class OpenQuiz {
     }
 
     stopAudio() {
-        ['snd-clock', 'snd-success', 'snd-error'].forEach(id => {
+        ['snd-clock', 'snd-success', 'snd-error', 'snd-complete', 'snd-failed'].forEach(id => {
             const audio = document.getElementById(id);
             if (audio) { audio.pause(); audio.currentTime = 0; }
         });
@@ -281,11 +281,11 @@ class OpenQuiz {
         document.getElementById('screen-game').classList.add('d-none');
         document.getElementById('footer-score').classList.add('d-none');
         document.getElementById('screen-result').classList.remove('d-none');
-        
+
         this.stopAudio();
 
-        const rank = [...this.players].sort((a,b) => b.score - a.score);
-        
+        const rank = [...this.players].sort((a, b) => b.score - a.score);
+
         const winner = rank[0];
         const winnerAlert = document.getElementById('winner-alert');
 
@@ -296,29 +296,61 @@ class OpenQuiz {
             // Se empatou: Mostra Azul (Info) e diz "Empate!"
             winnerAlert.className = "alert alert-info d-inline-block fw-bold px-5 mb-4 shadow-sm";
             winnerAlert.innerHTML = `<i class="bi bi-people-fill"></i> EMPATE!`;
+            this.playAudio('snd-failed');
         } else {
             // Se tem vencedor: Mostra Verde (Success) e o nome dele
             winnerAlert.className = "alert alert-success d-inline-block fw-bold px-5 mb-4 shadow-sm";
             winnerAlert.innerHTML = `<i class="bi bi-trophy-fill"></i> ${winner.name} venceu!`;
+            this.celebrar();
         }
-        
+
         const list = document.getElementById('final-list');
         list.innerHTML = '';
-        
+
         rank.forEach((p, i) => {
             const badgeClass = p.color.includes('bg-') ? p.color : `bg-${p.color}`;
 
             list.innerHTML += `
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <span>
-                        <span class="badge ${badgeClass} me-2">${i+1}º</span> 
+                        <span class="badge ${badgeClass} me-2">${i + 1}º</span> 
                         ${p.name}
                     </span> 
                     <strong>${p.score} pts</strong>
                 </li>`;
         });
 
+
         window.onbeforeunload = null;
+    }
+
+    celebrar() {
+        var duration = 3 * 1000; // Dura 3 segundos
+        var end = Date.now() + duration;
+
+        (function frame() {
+            // Lança confetes da Esquerda
+            confetti({
+                particleCount: 3,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: ['#0d6efd', '#ffc107', '#198754'] // Cores do Bootstrap (Azul, Amarelo, Verde)
+            });
+            // Lança confetes da Direita
+            confetti({
+                particleCount: 3,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: ['#0d6efd', '#ffc107', '#198754']
+            });
+
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        }());
+        this.playAudio('snd-complete');
     }
 
     resetToMenu() {
