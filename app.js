@@ -325,25 +325,25 @@ class OpenQuiz {
     }
 
     celebrar() {
-        var duration = 3 * 1000; // Dura 3 segundos
+        var duration = 3 * 1000;
         var end = Date.now() + duration;
 
         (function frame() {
             // Lança confetes da Esquerda
             confetti({
-                particleCount: 3,
+                particleCount: 5,
                 angle: 60,
                 spread: 55,
                 origin: { x: 0 },
-                colors: ['#0d6efd', '#ffc107', '#198754'] // Cores do Bootstrap (Azul, Amarelo, Verde)
+                colors: ['#0d6efd', '#198754', '#dc3545', '#ffc107', '#0dcaf0']
             });
             // Lança confetes da Direita
             confetti({
-                particleCount: 3,
+                particleCount: 5,
                 angle: 120,
                 spread: 55,
                 origin: { x: 1 },
-                colors: ['#0d6efd', '#ffc107', '#198754']
+                colors: ['#0d6efd', '#198754', '#dc3545', '#ffc107', '#0dcaf0']
             });
 
             if (Date.now() < end) {
