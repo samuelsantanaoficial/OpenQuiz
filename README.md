@@ -44,26 +44,28 @@ Esqueça JSON ou Excel. Agora você usa arquivos de texto simples (`.txt`).
 ### Exemplo de Arquivo (`quiz.txt`):
 
 ```markdown
-# Conhecimentos Gerais
+# Teste
 
-Qual é a capital da França?
-- Paris
-- Londres
-- Berlim
-- Madrid
+1. Qual a cor do sol?
+Fonte: https://www.google.com/search?q=qual+é+a+cor+do+sol%3F
+* Branco
+* Amarelo
+* Vermelho
+* Laranja
 
-Quem pintou a Mona Lisa?
-> Fonte: História da Arte (Renascimento)
-- Leonardo da Vinci
-- Michelangelo
-- Donatello
-- Rafael
+2. Quanto é 2+2?
+Obs: https://www.google.com/search?q=2+%2B+2%3F
+- 4
+- 22
+- 5
+- 3
 
-Quantos dias tem um ano bissexto?
-- 366
-- 365
-- 360
-- 364
+Quem descobriu o Brasil?
+> https://www.google.com/search?q=quem+descobriu+o+brasil%3F
++ Pedro Álvares Cabral
++ Colombo
++ Dom Pedro I
++ Lula
 
 ```
 
