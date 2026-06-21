@@ -42,10 +42,17 @@
 			<hr>
 			<div class="mb-4">
 				<label class="form-label fw-bold small text-muted">
-					1. Adicionar arquivo de perguntas (<code>.txt</code>)
+					1. Arquivo de perguntas (<code>.txt</code>)
 				</label>
+
+				<!-- Demo via GitHub -->
+				<select id="demo-select" class="form-select mb-2" disabled>
+					<option value="">Carregando exemplos…</option>
+				</select>
+				<div class="text-center text-muted small mb-2">— ou envie o seu próprio —</div>
+
 				<input type="file" id="file-upload" class="form-control" accept=".txt">
-				<p>Saiba como criar um arquivo de perguntas clicando <a href="https://github.com/samuelsantanaoficial/OpenQuiz">aqui</a>.</p>
+				<p class="form-text">Saiba como criar um arquivo de perguntas clicando <a href="https://github.com/samuelsantanaoficial/OpenQuiz">aqui</a>.</p>
 				<div id="file-info" class="form-text mt-2"></div>
 			</div>
 			<div class="mb-4">
