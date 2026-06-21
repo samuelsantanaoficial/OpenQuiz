@@ -19,6 +19,7 @@ class OpenQuiz {
     init() {
         this.renderPlayers();
         this.addEvents();
+        this.fetchDemoList();
     }
 
     addEvents() {
@@ -26,6 +27,7 @@ class OpenQuiz {
         document.getElementById('btn-add').addEventListener('click', () => this.addPlayer());
         document.getElementById('btn-remove').addEventListener('click', () => this.removePlayer());
         document.getElementById('btn-start').addEventListener('click', () => this.startGame());
+        document.getElementById('demo-select').addEventListener('change', () => this.loadDemoFile());
 
         document.getElementById('btn-release-timer').addEventListener('click', () => this.releaseTimer());
         document.getElementById('btn-next').addEventListener('click', () => this.nextTurn());
@@ -37,6 +39,55 @@ class OpenQuiz {
                 this.players[e.target.dataset.index].name = e.target.value;
             }
         });
+    }
+
+    // --- DEMO FILES (GitHub) ---
+    async fetchDemoList() {
+        const apiUrl = 'https://api.github.com/repos/samuelsantanaoficial/OpenQuiz/contents/dist';
+        const select = document.getElementById('demo-select');
+
+        try {
+            const res = await fetch(apiUrl);
+            if (!res.ok) throw new Error('GitHub API error');
+            const files = await res.json();
+            const txts = files.filter(f => f.name.endsWith('.txt'));
+
+            if (txts.length === 0) {
+                select.innerHTML = '<option value="">Nenhum arquivo encontrado</option>';
+                return;
+            }
+
+            select.innerHTML = '<option value="">— Escolha um tema —</option>';
+            txts.forEach(f => {
+                const opt = document.createElement('option');
+                opt.value = f.download_url;
+                opt.textContent = f.name.replace('.txt', '').replace(/_/g, ' ');
+                select.appendChild(opt);
+            });
+
+            select.disabled = false;
+        } catch (err) {
+            select.innerHTML = '<option value="">Erro ao carregar lista</option>';
+            console.error('fetchDemoList:', err);
+        }
+    }
+
+    async loadDemoFile() {
+        const select = document.getElementById('demo-select');
+        const url = select.value;
+        if (!url) return;
+
+        select.disabled = true;
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error('Download error');
+            const text = await res.text();
+            this.parseTXT(text);
+        } catch (err) {
+            document.getElementById('file-info').innerHTML = `<span class="text-danger">Erro ao baixar arquivo.</span>`;
+        } finally {
+            select.disabled = false;
+        }
     }
 
     // --- PARSER ---
@@ -162,6 +213,7 @@ class OpenQuiz {
     }
 
     releaseTimer() {
+        if (this.isLocked) return; // já respondeu — ignora clique acidental
         document.getElementById('btn-release-timer').classList.add('d-none');
 
         const area = document.getElementById('options-area');
