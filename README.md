@@ -1,23 +1,23 @@
-# OpenQuiz 🎓
+# OpenQuiz
 
 **O seu "Game Show" de bolso!** O **OpenQuiz** é um sistema leve e open-source para rodar quizzes multiplayer estilo "Passa ou Repassa" ou "Show do Milhão", onde um apresentador lê as perguntas e os jogadores competem localmente.
 
-> Crie perguntas usando um simples bloco de notas! 📝
+> Crie perguntas usando um simples bloco de notas!
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-* **⚡ Formato Ultra Simples (.txt):** Escreva perguntas como se estivesse num bloco de notas. Sem códigos complicados.
-* **🎤 Modo Apresentador:** O jogo exibe a pergunta, você lê para a plateia, e só libera as respostas ao apertar **"VALENDO!"**.
-* **⏱️ Tensão Real:** Efeitos sonoros sincronizados (Tic-Tac) para criar suspense nos 15 segundos de resposta.
-* **👥 Multiplayer Local:** Suporte para até 6 jogadores/times na mesma tela.
-* **📱 PWA & Offline:** Instale no celular/tablet e jogue mesmo sem internet.
-* **🎨 Design Moderno:** Interface limpa usando Bootstrap 5 e ícones intuitivos.
+* ** Formato Ultra Simples (.txt):** Escreva perguntas como se estivesse num bloco de notas. Sem códigos complicados.
+* ** Modo Apresentador:** O jogo exibe a pergunta, você lê para a plateia, e só libera as respostas ao apertar **"VALENDO!"**.
+* ** Tensão Real:** Efeitos sonoros sincronizados (Tic-Tac) para criar suspense nos 15 segundos de resposta.
+* ** Multiplayer Local:** Suporte para até 6 jogadores/times na mesma tela.
+* ** PWA & Offline:** Instale no celular/tablet e jogue mesmo sem internet.
+* ** Design Moderno:** Interface limpa usando Bootstrap 5 e ícones intuitivos.
 
 ---
 
-## 🚀 Como Jogar
+## Como Jogar
 
 1. **Conecte na TV (Opcional):** Ideal para projetar a tela para grupos.
 2. **Carregue o Arquivo:** Selecione seu arquivo `.txt` com as perguntas.
@@ -32,11 +32,11 @@
 
 ---
 
-## 📝 Criando suas Perguntas (Novo Formato)
+## Criando suas Perguntas (Novo Formato)
 
 Esqueça JSON ou Excel. Agora você usa arquivos de texto simples (`.txt`).
 
-### A Regra de Ouro 🥇
+### A Regra de Ouro
 
 **A primeira opção da lista deve ser SEMPRE a resposta CORRETA.**
 *(Não se preocupe, o jogo embaralha as opções automaticamente na hora de exibir).*
@@ -77,9 +77,9 @@ Quem descobriu o Brasil?
 
 ---
 
-## 🤖 Gerando Perguntas com IA
+## Gerando Perguntas com IA
 
-Quer criar um quiz em segundos? Copie este prompt e cole no **ChatGPT**, **Gemini** ou **Claude**:
+Quer criar um quiz em segundos? Copie este prompt e cole no **ChatGPT** ou **Gemini**:
 
 ```text
 Crie um arquivo de quiz sobre o tema [SEU TEMA AQUI].
@@ -95,7 +95,7 @@ Formato obrigatório:
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 * **HTML5 & CSS3** (Bootstrap 5)
 * **JavaScript Moderno** (ES6+)
@@ -104,6 +104,6 @@ Formato obrigatório:
 
 ---
 
-## 📄 Licença
+## Licença
 
 Este projeto está sob licença MIT. Você é livre para usar na sua escola, igreja ou grupo de amigos.
