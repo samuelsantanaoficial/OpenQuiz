@@ -82,14 +82,48 @@ Quem descobriu o Brasil?
 Quer criar um quiz em segundos? Copie este prompt e cole no **ChatGPT** ou **Gemini**:
 
 ```text
-Crie um arquivo de quiz sobre o tema [SEU TEMA AQUI].
-Formato obrigatório:
-1. Use "# " para o título.
-2. A primeira opção de cada pergunta deve ser a CORRETA (comece com hifén "- ").
-3. Adicione 3 opções incorretas abaixo da correta.
-4. (Opcional) Adicione uma linha de referência com "> " abaixo da pergunta.
-5. Deixe uma linha em branco entre as perguntas.
-6. Não numere as perguntas.
+Crie um arquivo de quiz sobre o tema **[TEMA]**.
+
+Siga rigorosamente estas regras:
+1. Use `# ` para o título principal.
+2. Cada pergunta deve conter exatamente 4 alternativas.
+3. A alternativa correta deve ser SEMPRE a primeira alternativa apresentada.
+4. As demais 3 alternativas devem ser incorretas, mas plausíveis.
+5. Todas as alternativas devem usar o mesmo marcador (`* `).
+6. Opcionalmente, após a pergunta, adicione uma linha de referência iniciada por `> ` contendo a referência bíblica e o link correspondente.
+7. Deixe uma linha em branco entre as perguntas.
+8. Não numere as perguntas.
+9. Não informe qual alternativa está correta.
+10. As perguntas devem ter respostas objetivas e baseadas no texto bíblico.
+11. Evite perguntas repetidas ou muito semelhantes.
+12. Distribua as perguntas por todo o conteúdo do tema, evitando concentrar muitas perguntas no mesmo episódio ou versículo.
+13. Quando houver referência bíblica, utilize o formato:
+
+> Livro capítulo:versículo https://www.bibliaonline.com.br/[versão]/[livro]/[capítulo]/[versículo]
+
+14. Gere apenas o conteúdo do arquivo TXT, sem explicações, comentários ou formatação Markdown adicional.
+
+Modelo:
+
+# Título do Tema
+
+Pergunta?
+
+> Referência bíblica
+
+* Resposta correta
+* Alternativa incorreta
+* Alternativa incorreta
+* Alternativa incorreta
+
+Pergunta?
+
+> Referência bíblica
+
+* Resposta correta
+* Alternativa incorreta
+* Alternativa incorreta
+* Alternativa incorreta
 
 ```
 
